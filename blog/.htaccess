@@ -1,0 +1,20 @@
+#Configuracion de apache
+#Seguir enlaces simbolicos
+Options +FollowSymLinks
+#Encedemos el motor de Rewrite que tenemos en XAMPP/php
+RewriteEngine On 
+
+
+#Esto quiere decir que estas dos condiciones permitiran que cualquier ruta de directorio o archivo que llamemos de nuestro script sea utilizabe
+#La D se refiere a directotios como por ejemplo entrar al css // RewriteCond = condicion de rescritura
+RewriteCond %{SCRIPT_FILENAME} !-d 
+#La f se refiere a ficheros o archivos como por ejemplo ejecutar el css
+RewriteCond %{SCRIPT_FILENAME} !-f
+
+
+
+# Expresion regular especie de codigo que permite dar una serie de normas para que coincidia un string o texto de forma exacta, ej: telefono,emails y demas
+#Damos una regla que agarre cualquier enlace que se escriba y que todos llamen a index.php
+RewriteRule ^.*$ ./index.php
+# ^.*$ esto agarra cualquier direccion que escriba el usuario en la barra de navegacion, ej: el usuario escribe cualquier que no corresponde en la barra y redirigimos al index
+#'^' aca empieza y aca '$' termina 
